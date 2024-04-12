@@ -27,6 +27,24 @@
             transition: 0.3s;
         }
 
+        .tabButton {
+            font-family: 'MaPolice', sans-serif;
+            display: block;
+            background-color: #2ABE8A;
+            color: black;
+            padding: 12px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tabButton:hover {
+            background-color: #40B570;
+        }
+
         .tab button:hover {
             background-color: #40B570;
         }
@@ -80,17 +98,25 @@
             font-family: 'MaPolice', sans-serif; 
         }
 
+        .maBarre {
+            font-family: maPolice, sans-serif;
+            width: 300px;
+            height: 40px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
     <button class="tablinks" onclick="openTab(event, 'userpage')">User</button>
     <button class="tablinks" onclick="openTab(event, 'credit')">Credits</button>
     <button class="tablinks" onclick="openTab(event, 'Message')">Messages</button>
     <button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
-    <button onClick="goToPage">Discord</button>
+    <a href="https://discord.gg/g7dGKuEZ" class="tabButton">Discord</a>
     <button onclick="closePage()">Close</button>
 </div>
 
@@ -108,10 +134,10 @@
 
 <div id="Message" class="tabcontent">
     <h3>Message</h3>
-    <button class="button-normal">Send message</button>
+    <button onclick="effacerTexte()" class="button-normal">Send message</button>
     <button class="button-normal" onclick="toggleMessage()">Show bar</button>
     <div id="messageArea" style="display: none;">
-        <textarea id="userMessage" rows="4" cols="50" placeholder="Please write message here.."></textarea>
+        <textarea id="texteAEffacer" class="maBarre" rows="4" cols="50" placeholder="Please write message here.."></textarea>
     </div>
 </div>
 
@@ -143,6 +169,9 @@
         evt.currentTarget.classList.add("active");
     }
 
+    document.getElementById("defaultOpen").click();
+    window.location.href = url;
+
     function goToPage(url) {
         window.location.href = url;
     }
@@ -163,6 +192,11 @@
         {
             console.log("idk");
         }
+    }
+
+    function effacerTexte() {
+        var barreEcriture = document.getElementById("texteAEffacer");
+        barreEcriture.value = "";
     }
 
     function toggleMessage() {
