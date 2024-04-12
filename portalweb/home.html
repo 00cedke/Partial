@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Wii U</title>
+    <style>
+        .tab {
+            font-family: 'MaPolice', sans-serif;
+            overflow: hidden;
+            border: 1px solid #06553A;
+            background-color: #f1f1f1;
+            width: 200px;
+            float: left;
+            border-radius: 10px; 
+        }
+
+        .tab button {
+            display: block;
+            background-color: #2ABE8A;
+            color: black;
+            padding: 12px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: #40B570;
+        }
+
+        .tab button.active {
+            background-color: #5BD1A8;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            width: calc(100% - 200px);
+            float: left;
+        }
+
+        .maCaseACocher {
+            transform: scale(1.5); 
+            margin-right: 10px; 
+        }
+
+        .button-normal {
+            border-radius: 5px; 
+            width: 30%;
+            background-color: #2ABE8A;
+            font-family: 'MaPolice', sans-serif;
+            color: black;
+        }
+
+        .icon-box {
+            text-align: center;
+            border-radius: 10px; 
+        }
+
+        .icon {
+            width: 50px; 
+            height: 50px;
+            border-radius: 10px; 
+        }
+
+        @font-face {
+            font-family: 'MaPolice'; 
+            src: url('fonts/MaPolice.woff2') format('woff2'),
+                 url('fonts/MaPolice.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'MaPolice', sans-serif; 
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'userpage')">User</button>
+    <button class="tablinks" onclick="openTab(event, 'credit')">Credits</button>
+    <button class="tablinks" onclick="openTab(event, 'Message')">Messages</button>
+    <button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
+    <button onClick="goToPage">Discord</button>
+    <button onclick="closePage()">Close</button>
+</div>
+
+<div id="Home" class="tabcontent">
+    <h1>Welcome to PortalVerse !</h1>
+    <p>Project created by cedkeChat01.</p>
+</div>
+
+<div id="credit" class="tabcontent">
+    <h3>Credits</h3>
+    <p>- cedkeChat (Owner)</p>
+    <p>- Ortalex [francky_fh]</p>
+    <p>- NeluXP-Modz</p>
+</div>
+
+<div id="Message" class="tabcontent">
+    <h3>Message</h3>
+    <button class="button-normal">Send message</button>
+    <button class="button-normal" onclick="toggleMessage()">Show bar</button>
+    <div id="messageArea" style="display: none;">
+        <textarea id="userMessage" rows="4" cols="50" placeholder="Please write message here.."></textarea>
+    </div>
+</div>
+
+<div id="userpage" class="tabcontent">
+    <p>NNID: [unknown]</p>
+    <p>MiiName: [unknown]</p>
+</div>
+
+<div id="settings" class="tabcontent">
+    <label>
+        <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Music</input><br><br>
+        <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Hardware Acceleration</input>
+    </label>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    function goToPage(url) {
+        window.location.href = url;
+    }
+
+    function Test()
+    {
+        if (confirm("You are sure to close the website ?")) {
+            window.closed();
+            console.log("test");
+        }
+    }
+
+    function closeWebsite() {
+        if (confirm("You are sure to close the website ?")) {
+            window.close();
+        }
+        else
+        {
+            console.log("idk");
+        }
+    }
+
+    function toggleMessage() {
+        var messageArea = document.getElementById("messageArea");
+        if (messageArea.style.display === "none") {
+            messageArea.style.display = "block";
+        } else {
+            messageArea.style.display = "none";
+        }
+    }
+
+        </script>
+    </body>
+</html>
