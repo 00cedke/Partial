@@ -7,7 +7,7 @@ const got = require('got');
 
 const Mii = require('mii-js');
 
-const PNIDSchema = new Schema({
+const NNIDSchema = new Schema({
 	access_level: {
 		type: Number,
 		default: 0  // 0: standard, 1: tester, 2: mod?, 3: dev
