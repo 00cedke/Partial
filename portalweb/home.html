@@ -208,6 +208,21 @@
         }
     }
 
+    function generateLicenseKey(length) {
+            var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            var key = '';
+
+            for (var i = 0; i < length; i++) {
+                key += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return key;
+        }
+
+        var licenseKey = generateLicenseKey(20);
+
+        document.getElementById('licenseKey').textContent = licenseKey;
+
         </script>
     </body>
 </html>
