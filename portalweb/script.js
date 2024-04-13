@@ -1,17 +1,52 @@
+window.onload = function() {
+    var storedMessages = localStorage.getItem("messages");
+    if (storedMessages) {
+        messages = JSON.parse(storedMessages);
+        updateMessageContainer();
+    }
+};
+
 function sendMessage() {
     var messageInput = document.getElementById("message-input");
-    var message = messageInput.value;
+    var message = messageInput.value.trim();
 
-    if (message.trim() !== "") {
-        addMessageToPage(message);
+    if (message !== "") {
+        messages.push(message);
+
+        updateMessageContainer();
 
         messageInput.value = "";
+
+        localStorage.setItem("messages", JSON.stringify(messages));
     }
 }
 
-function addMessageToPage(message) {
+function updateMessageContainer() {
     var messageContainer = document.getElementById("message-container");
-    var newMessageElement = document.createElement("div");
-    newMessageElement.textContent = message;
-    messageContainer.appendChild(newMessageElement);
+    messageContainer.innerHTML = "";
+
+    messages.forEach(function(message) {
+        var newMessageElement = document.createElement("div");
+        newMessageElement.textContent = message;
+        messageContainer.appendChild(newMessageElement);
+    });
 }
+
+var messages = [];
+
+function showNotification() {
+    var notificationContainer = document.getElementById("notification-container");
+    var notification = document.getElementById("notification");
+    
+    // Mettre à jour le contenu de la notification
+    notification.textContent = "Ceci est une notification !";
+
+    // Afficher la notification
+    notificationContainer.classList.remove("hidden");
+
+    // Masquer la notification après quelques secondes (par exemple, 5 secondes)
+    setTimeout(function() {
+        notificationContainer.classList.add("hidden");
+    }, 5000);
+}
+
