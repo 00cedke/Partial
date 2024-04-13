@@ -1,30 +1,36 @@
 <?php
-$ip = $_SERVER['REMOTE_ADDR'];
+function get_user_ip() {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
 
-$token = "https://discord.com/api/webhooks/1228227307727224853/T8B6uR1RpLanuGaRXdcy5vS-u4nX0S3iGJ8GnEK_rFioGa2veDvAs-i1fyJH0c3i8W2s";
+$user_ip = get_user_ip();
 
-$data = array(
-    "content" => "$ip conencted on partial.great-site.net"
-);
+$webhook_url = 'https://discord.com/api/webhooks/1228791358400237648/xiv8SqKydiCeAb_W4i3W1tMTe726PR5JQ60NGTdYCiUJ86L0BmtVbaBOGYTFxneFTKso';
 
-$jsonData = json_encode($data);
+$message = array('content' => '$ip connected on http://localhost:8080');
 
-$curl = curl_init();
-curl_setopt_array($curl, array(
-    CURLOPT_URL => $url,
-    CURLOPT_HTTPHEADER => array(
-        "Content-Type: application/json"
-    ),
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => $jsonData,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_SSL_VERIFYPEER => false
-));
+$message_json = json_encode($message);
 
-$response = curl_exec($curl);
+$ch = curl_init($webhook_url);
 
-curl_close($curl);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $message_json);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
-echo $response;
+$response = curl_exec($ch);
+
+if ($response === false) {
+    echo 'Erreur cURL : ' . curl_error($ch);
+} else {
+    echo 'Réponse Discord : ' . $response;
+}
+
+curl_close($ch);
 ?>
