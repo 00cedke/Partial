@@ -1,13 +1,5 @@
 const mongoose = require('mongoose');
 const { mongoose: mongooseConfig } = require('../config.json');
-const { COMMUNITY } = require('./models/communities');
-const { CONTENT } = require('./models/content');
-const { CONVERSATION } = require('./models/conversation');
-const { ENDPOINT } = require('./models/endpoint');
-const { NOTIFICATION } = require('./models/notifications');
-const { POST } = require('./models/post');
-const { SETTINGS } = require('./models/settings');
-const { REPORT } = require('./models/report');
 
 const { uri, database, options } = mongooseConfig;
 const logger = require('./logger');
