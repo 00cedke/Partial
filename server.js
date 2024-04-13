@@ -1,9 +1,10 @@
 const http = require('http');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 const app = express();
+const { exec } = require('child_process');
 const port = 4221;
 
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +19,22 @@ app.use((req, res, next) => {
     next();
 });
 
-app.listen(port, () => {
-    console.log('Connected to port');
-    app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`))
+const server = http.createServer((req, res) => {
+  const filePath = path.join(__dirname, 'portalweb/home.html');
+
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(500);
+      res.end('Erreur interne du serveur');
+    } else {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data);
+    }
+  });
+});
+
+server.listen(port, () => {
+  console.log(`Serveur HTTP écoutant sur le port ${port}`);
+  
+  // exec(`start http://localhost:${port}`); // start localhost url + port only
 });
