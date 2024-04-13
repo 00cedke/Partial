@@ -67,6 +67,27 @@
             margin-right: 10px; 
         }
 
+        .notification {
+            background-color: #f2f2f2;
+            color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000; 
+            display: none; 
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+        }
+
         .button-normal {
             border-radius: 5px; 
             width: 30%;
@@ -113,9 +134,10 @@
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
     <button class="tablinks" onclick="openTab(event, 'userpage')">User</button>
-    <button class="tablinks" onclick="openTab(event, 'credit')">Credits</button>
     <button class="tablinks" onclick="openTab(event, 'Message')">Messages</button>
+    <button class="tablinks" onclick="openTab(event, 'Notifications')">Notifications</button>
     <button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
+    <button class="tablinks" onclick="openTab(event, 'credit')">Credits</button>
     <button onclick="goToPage('https://discord.gg/rZb8gdwT')">Discord</button>
     <button onClick="closePage()">Close</button>
 </div>
@@ -144,6 +166,10 @@
 <div id="userpage" class="tabcontent">
     <p>NNID: [unknown]</p>
     <p>MiiName: [unknown]</p>
+</div>
+
+<div id="Notifications" class="tabcontent">
+    <span class="close-btn" onclick="closeNotification()">&times;</span>
 </div>
 
 <div id="settings" class="tabcontent">
@@ -222,6 +248,12 @@
         var licenseKey = generateLicenseKey(20);
 
         document.getElementById('licenseKey').textContent = licenseKey;
+
+    function showNotification() {
+        document.getElementById('notification').style.display = 'block';
+    }
+
+    setTimeout(showNotification, 3000);
 
         </script>
     </body>
