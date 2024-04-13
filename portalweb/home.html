@@ -116,6 +116,30 @@
             font-style: normal;
         }
 
+        #message-container {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    
+        .notification {
+            background-color: #f2f2f2;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         body {
             font-family: 'MaPolice', sans-serif; 
         }
@@ -133,12 +157,12 @@
 <body>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
-    <button class="tablinks" onclick="openTab(event, 'userpage')">User</button>
-    <button class="tablinks" onclick="openTab(event, 'Message')">Messages</button>
+    <button class="tablinks" href="#home" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+    <button class="tablinks" href="#user" onclick="openTab(event, 'userpage')">User</button>
+    <button class="tablinks" href="#messages" onclick="openTab(event, 'Message')">Messages</button>
     <button class="tablinks" onclick="openTab(event, 'Notifications')">Notifications</button>
-    <button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
-    <button class="tablinks" onclick="openTab(event, 'credit')">Credits</button>
+    <button class="tablinks" href="#settings" onclick="openTab(event, 'settings')">Settings</button>
+    <button class="tablinks" href="credits" onclick="openTab(event, 'credit')">Credits</button>
     <button onclick="goToPage('https://discord.gg/rZb8gdwT')">Discord</button>
     <button onClick="closePage()">Close</button>
 </div>
@@ -157,12 +181,11 @@
 
 <div id="Message" class="tabcontent">
     <h3>Message</h3>
-    <script src="script.js"></script>
-    <button onclick="sendMessage() class="button-normal">Send message</button>
-    <button class="button-normal" onclick="toggleMessage()">Show bar</button>
-    <div id="messageArea" style="display: none;">
-        <textarea id="texteAEffacer" class="maBarre" rows="4" cols="50" placeholder="Please write message here.."></textarea>
-    </div>
+    <div id="message-container"></div>
+    <input type="text" id="message-input">
+    <button onclick="sendMessage()">Envoyer message</button>
+
+    <script src="http://partial.great-site.net/script.js"></script>
 </div>
 
 <div id="userpage" class="tabcontent">
@@ -170,8 +193,10 @@
     <p>MiiName: [unknown]</p>
 </div>
 
-<div id="Notifications" class="tabcontent">
-    <span class="close-btn" onclick="closeNotification()">&times;</span>
+<div onload="showNotification()" id="Notifications" class="tabcontent">
+    <div id="notification" class="notification hidden">
+        Wii U Online is dead. Retry again later..
+    </div>
 </div>
 
 <div id="settings" class="tabcontent">
@@ -204,28 +229,36 @@
         window.location.href = url;
     }
 
-    function Test()
-    {
-        if (confirm("You are sure to close the website ?")) {
-            window.closed();
-            console.log("test");
-        }
-    }
-
     function closeWebsite() {
         if (confirm("You are sure to close the website ?")) {
             window.close();
         }
-        else
-        {
-            console.log("idk");
-        }
+    }
+
+    function autoRefresh() {
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
     }
 
     function effacerTexte() {
         var barreEcriture = document.getElementById("texteAEffacer");
         barreEcriture.value = "";
     }
+
+    function sendMessage() {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value.trim();
+
+            if (message !== "") {
+                var messageContainer = document.getElementById("message-container");
+                var newMessageElement = document.createElement("div");
+                newMessageElement.textContent = message;
+                messageContainer.appendChild(newMessageElement);
+
+                messageInput.value = "";
+            }
+        }
 
     function toggleMessage() {
         var messageArea = document.getElementById("messageArea");
@@ -251,12 +284,10 @@
 
         document.getElementById('licenseKey').textContent = licenseKey;
 
-    function showNotification() {
-        document.getElementById('notification').style.display = 'block';
-    }
-
-    setTimeout(showNotification, 3000);
-
+        function showNotification() {
+            document.getElementById('notification').style.display = 'block';
+        }
+        
         </script>
     </body>
 </html>
