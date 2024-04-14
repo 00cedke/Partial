@@ -5,6 +5,7 @@ Wii U website for message conversation
 -
 
 # Execute server
-- Open CMD put `cd Partial-main`.
-- after put `npm i` for install node_modules.
-- for execute server port you need to put `node server.js`.
+- Install NodeJS
+- `git clone https://github.com/00cedke/Partial`
+- `cd Partial-main`
+- `node server.js` to run the web port.
