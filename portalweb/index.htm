@@ -1,1 +1,293 @@
-<body onLoad=setTimeout("location.href='home.html'",0030)>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Wii U</title>
+    <style>
+        .tab {
+            font-family: 'MaPolice', sans-serif;
+            overflow: hidden;
+            border: 1px solid #06553A;
+            background-color: #f1f1f1;
+            width: 200px;
+            float: left;
+            border-radius: 10px; 
+        }
+
+        .tab button {
+            display: block;
+            background-color: #2ABE8A;
+            color: black;
+            padding: 12px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tabButton {
+            font-family: 'MaPolice', sans-serif;
+            display: block;
+            background-color: #2ABE8A;
+            color: black;
+            padding: 12px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tabButton:hover {
+            background-color: #40B570;
+        }
+
+        .tab button:hover {
+            background-color: #40B570;
+        }
+
+        .tab button.active {
+            background-color: #5BD1A8;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            width: calc(100% - 200px);
+            float: left;
+        }
+
+        .maCaseACocher {
+            transform: scale(1.5); 
+            margin-right: 10px; 
+        }
+
+        .notification {
+            background-color: #f2f2f2;
+            color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000; 
+            display: none; 
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+        }
+
+        .button-normal {
+            border-radius: 5px; 
+            width: 30%;
+            background-color: #2ABE8A;
+            font-family: 'MaPolice', sans-serif;
+            color: black;
+        }
+
+        .icon-box {
+            text-align: center;
+            border-radius: 10px; 
+        }
+
+        .icon {
+            width: 50px; 
+            height: 50px;
+            border-radius: 10px; 
+        }
+
+        @font-face {
+            font-family: 'MaPolice'; 
+            src: url('fonts/MaPolice.woff2') format('woff2'),
+                 url('fonts/MaPolice.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #message-container {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    
+        .notification {
+            background-color: #f2f2f2;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        body {
+            font-family: 'MaPolice', sans-serif; 
+        }
+
+        .maBarre {
+            font-family: maPolice, sans-serif;
+            width: 300px;
+            height: 40px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="tab">
+    <button class="tablinks" href="#home" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+    <button class="tablinks" href="#user" onclick="openTab(event, 'userpage')">User</button>
+    <button class="tablinks" href="#messages" onclick="openTab(event, 'Message')">Messages</button>
+    <button class="tablinks" onclick="openTab(event, 'Notifications')">Notifications</button>
+    <button class="tablinks" href="#settings" onclick="openTab(event, 'settings')">Settings</button>
+    <button class="tablinks" href="credits" onclick="openTab(event, 'credit')">Credits</button>
+    <button onclick="goToPage('https://discord.gg/rZb8gdwT')">Discord</button>
+    <button onClick="closePage()">Close</button>
+</div>
+
+<div id="Home" class="tabcontent">
+    <h1>Welcome to PortalVerse !</h1>
+    <p>Project created by cedkeChat01.</p>
+</div>
+
+<div id="credit" class="tabcontent">
+    <h3>Credits</h3>
+    <p>- cedkeChat (Owner)</p>
+    <p>- Ortalex [francky_fh]</p>
+    <p>- NeluXP-Modz</p>
+</div>
+
+<div id="Message" class="tabcontent">
+    <h3>Message</h3>
+    <div id="message-container"></div>
+    <input type="text" id="message-input">
+    <button onclick="sendMessage()">Envoyer message</button>
+
+    <script src="http://partial.great-site.net/script.js"></script>
+</div>
+
+<div id="userpage" class="tabcontent">
+    <p>NNID: [unknown]</p>
+    <p>MiiName: [unknown]</p>
+</div>
+
+<div onload="showNotification()" id="Notifications" class="tabcontent">
+    <div id="notification" class="notification hidden">
+        Wii U Online is dead. Retry again later..
+    </div>
+</div>
+
+<div id="settings" class="tabcontent">
+    <label>
+        <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Music</input><br><br>
+        <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Hardware Acceleration</input>
+    </label>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    document.getElementById("defaultOpen").click();
+    window.location.href = url;
+
+    function goToPage(url) {
+        window.location.href = url;
+    }
+
+    function closeWebsite() {
+        if (confirm("You are sure to close the website ?")) {
+            window.close();
+        }
+    }
+
+    function autoRefresh() {
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
+    }
+
+    function effacerTexte() {
+        var barreEcriture = document.getElementById("texteAEffacer");
+        barreEcriture.value = "";
+    }
+
+    function sendMessage() {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value.trim();
+
+            if (message !== "") {
+                var messageContainer = document.getElementById("message-container");
+                var newMessageElement = document.createElement("div");
+                newMessageElement.textContent = message;
+                messageContainer.appendChild(newMessageElement);
+
+                messageInput.value = "";
+            }
+        }
+
+    function toggleMessage() {
+        var messageArea = document.getElementById("messageArea");
+        if (messageArea.style.display === "none") {
+            messageArea.style.display = "block";
+        } else {
+            messageArea.style.display = "none";
+        }
+    }
+
+    function generateLicenseKey(length) {
+            var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            var key = '';
+
+            for (var i = 0; i < length; i++) {
+                key += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return key;
+        }
+
+        var licenseKey = generateLicenseKey(20);
+
+        document.getElementById('licenseKey').textContent = licenseKey;
+
+        function showNotification() {
+            document.getElementById('notification').style.display = 'block';
+        }
+        
+        </script>
+    </body>
+</html>
