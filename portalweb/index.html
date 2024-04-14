@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onglets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #ffffff;
+            border-bottom: 2px solid #cccccc;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .tab {
+            float: left;
+            text-align: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            margin-right: 5px;
+        }
+
+        .active {
+            background-color: #4855FB;
+            color: #ffffff;
+        }
+
+        .inactive {
+            background-color: #ffffff;
+            color: #4855FB;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .blue-box {
+            background-color: #3498db; /* Couleur de fond bleue */
+            color: #ffffff; /* Couleur du texte blanc */
+            padding: 10px; /* Espacement intérieur */
+            width: 325px; /* Largeur */
+            height: 165px; /* Hauteur */
+            border-radius: 10px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        p {
+            font-family: 'Roboto', sans-serif; 
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="tabs">
+        <li class="tab active">Home</li>
+        <li class="tab inactive">Messages</li>
+        <li class="tab inactive">Notifications</li>
+        <li class="tab inactive">Settings</li>
+        <li onclick="ClosePage()" class="tab inactive">Exit</li>
+    </ul>
+
+    <div class="content" id="page1">
+        <h2>Home</h2>
+        <p>You are currently in the beta version of our server.</p>
+    </div>
+
+    <div class="content hidden" id="page2">
+        <div id="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Entrez votre message...">
+        <button id="send-button">Envoyer message</button>
+    </div>
+
+    <div class="content hidden" id="page3">
+        <div class="blue-box">
+            <h2>The death of the Nintendo Network</h2>
+            <p>Since April 8 2024, the online mode of Nintendo servers has been stopped.</p>
+            <p>Article published on April 14 at 7:14 p.m.</p>
+        </div>
+    </div>
+
+    <div class="content hidden" id="page4">
+        <h2>Contenu de la page 4</h2>
+        <p>Ceci est le contenu de la page 4.</p>
+    </div>
+
+    <div class="content hidden" id="page5">
+        <a>if you see this, it's because the exit button doesn't close the page :/</a>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Fonction pour afficher un message dans la boîte de chat
+        function afficherMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.innerText = message;
+            chatBox.appendChild(messageElement);
+        }
+
+        // Fonction pour envoyer un message
+        function envoyerMessage() {
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                afficherMessage(message); // Afficher le message localement
+                // Envoyer le message au serveur (via WebSocket, AJAX, etc.)
+                // Vous devrez implémenter cette partie
+                // Par exemple, en utilisant WebSocket pour envoyer le message au serveur
+            }
+            messageInput.value = ''; // Effacer le champ de saisie après l'envoi
+        }
+
+        // Écouteur d'événements pour le bouton d'envoi
+        sendButton.addEventListener('click', envoyerMessage);
+
+        // Écouteur d'événements pour la touche "Enter" pour envoyer un message
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                envoyerMessage();
+            }
+        });
+
+        // WebSocket pour recevoir les messages du serveur
+        // Vous devez remplacer 'ws://localhost:8080' par l'URL de votre serveur WebSocket
+        const socket = new WebSocket('');
+
+        // Écouteur d'événements pour les messages reçus du serveur
+        socket.addEventListener('message', function(event) {
+            const message = event.data;
+            afficherMessage(message); // Afficher le message reçu dans la boîte de chat
+        });
+
+        function ClosePage() {
+            window.close();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(function(tab, index) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) {
+                        t.classList.remove('active');
+                        t.classList.add('inactive');
+                    });
+
+                    tab.classList.remove('inactive');
+                    tab.classList.add('active');
+
+                    contents.forEach(function(content) {
+                        content.classList.add('hidden');
+                    });
+
+                    contents[index].classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
