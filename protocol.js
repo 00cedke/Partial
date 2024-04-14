@@ -4,7 +4,7 @@ const PORT = 4332;
 
 app.use(express.json());
 
-app.post('/votre-route', (req, res) => {
+app.post('/portalweb', (req, res) => {
     const data = req.body;
 
     const response = {
