@@ -15,3 +15,7 @@ $licenseKey = generateLicenseKey(16);
 echo $licenseKey;
 
 ?>
+
+<html>
+    <body onLoad="generatLicenseKey"></body>body>
+</html>
