@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onglets</title>
+    <title>PartialVerse</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,54 +99,7 @@
         <p>Ceci est le contenu de la page 4.</p>
     </div>
 
-    <div class="content hidden" id="page5">
-        <a>if you see this, it's because the exit button doesn't close the page :/</a>
-    </div>
-
     <script>
-        const chatBox = document.getElementById('chat-box');
-        const messageInput = document.getElementById('message-input');
-        const sendButton = document.getElementById('send-button');
-
-        // Fonction pour afficher un message dans la boîte de chat
-        function afficherMessage(message) {
-            const messageElement = document.createElement('div');
-            messageElement.innerText = message;
-            chatBox.appendChild(messageElement);
-        }
-
-        // Fonction pour envoyer un message
-        function envoyerMessage() {
-            const message = messageInput.value;
-            if (message.trim() !== '') {
-                afficherMessage(message); // Afficher le message localement
-                // Envoyer le message au serveur (via WebSocket, AJAX, etc.)
-                // Vous devrez implémenter cette partie
-                // Par exemple, en utilisant WebSocket pour envoyer le message au serveur
-            }
-            messageInput.value = ''; // Effacer le champ de saisie après l'envoi
-        }
-
-        // Écouteur d'événements pour le bouton d'envoi
-        sendButton.addEventListener('click', envoyerMessage);
-
-        // Écouteur d'événements pour la touche "Enter" pour envoyer un message
-        messageInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                envoyerMessage();
-            }
-        });
-
-        // WebSocket pour recevoir les messages du serveur
-        // Vous devez remplacer 'ws://localhost:8080' par l'URL de votre serveur WebSocket
-        const socket = new WebSocket('');
-
-        // Écouteur d'événements pour les messages reçus du serveur
-        socket.addEventListener('message', function(event) {
-            const message = event.data;
-            afficherMessage(message); // Afficher le message reçu dans la boîte de chat
-        });
-
         function ClosePage() {
             window.close();
         }
