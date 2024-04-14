@@ -17,5 +17,5 @@ echo $licenseKey;
 ?>
 
 <html>
-    <body onLoad="generatLicenseKey"></body>body>
+    <body onLoad="generatLicenseKey()"></body>body>
 </html>
