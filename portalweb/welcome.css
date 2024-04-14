@@ -26,14 +26,16 @@ body {
     display: flex;
 }
 
-button {
+.button {
+    display: inline-block;
     padding: 10px 20px;
-    margin: 0 10px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    outline: none;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 10px; // ajout d'un putain d'espace
 }
 
 .blue {
@@ -44,3 +46,4 @@ button {
 .blue:hover {
     background-color: #2980b9;
 }
+
