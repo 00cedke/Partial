@@ -1,1 +1,1 @@
-<body onLoad=setTimeout("location.href='portalweb/index.html'",0030)>
+<body onLoad=setTimeout("location.href='portalweb/welcome.html'",0030)>
