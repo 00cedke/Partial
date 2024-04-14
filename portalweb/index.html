@@ -8,7 +8,7 @@
         .tab {
             font-family: 'MaPolice', sans-serif;
             overflow: hidden;
-            border: 1px solid #06553A;
+            border: 1px solid #4855FB;
             background-color: #f1f1f1;
             width: 200px;
             float: left;
@@ -17,7 +17,7 @@
 
         .tab button {
             display: block;
-            background-color: #2ABE8A;
+            background-color: #4855FB;
             color: black;
             padding: 12px 16px;
             width: 100%;
@@ -31,7 +31,7 @@
         .tabButton {
             font-family: 'MaPolice', sans-serif;
             display: block;
-            background-color: #2ABE8A;
+            background-color: #1725F3;
             color: black;
             padding: 12px 16px;
             width: 100%;
@@ -43,15 +43,15 @@
         }
 
         .tabButton:hover {
-            background-color: #40B570;
+            background-color: #363EA8;
         }
 
         .tab button:hover {
-            background-color: #40B570;
+            background-color: #363EA8;
         }
 
         .tab button.active {
-            background-color: #5BD1A8;
+            background-color: #5660F1;
         }
 
         .tabcontent {
@@ -92,7 +92,7 @@
         .button-normal {
             border-radius: 5px; 
             width: 30%;
-            background-color: #2ABE8A;
+            background-color: #1725F3;
             font-family: 'MaPolice', sans-serif;
             color: black;
         }
@@ -204,6 +204,13 @@
         <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Music</input><br><br>
         <input type="checkbox" name="maCaseACocher" class="maCaseACocher">Hardware Acceleration</input>
     </label>
+
+    <div class="language-buttons">
+        <button onclick="changeLanguage('fr')">Français</button>
+        <button onclick="changeLanguage('en')">English</button>
+    </div>
+
+    <script src="translations.json"></script>
 </div>
 
 <script>
@@ -268,6 +275,14 @@
             messageArea.style.display = "none";
         }
     }
+
+    function changeLanguage(lang) {
+            if (lang === 'fr') {
+                document.documentElement.lang = 'fr';
+            } else if (lang === 'en') {
+                document.documentElement.lang = 'en';
+            }
+        }
 
     function generateLicenseKey(length) {
             var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
