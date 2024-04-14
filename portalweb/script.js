@@ -38,13 +38,10 @@ function showNotification() {
     var notificationContainer = document.getElementById("notification-container");
     var notification = document.getElementById("notification");
     
-    // Mettre à jour le contenu de la notification
-    notification.textContent = "Ceci est une notification !";
+    notification.textContent = "test notif";
 
-    // Afficher la notification
     notificationContainer.classList.remove("hidden");
 
-    // Masquer la notification après quelques secondes (par exemple, 5 secondes)
     setTimeout(function() {
         notificationContainer.classList.add("hidden");
     }, 5000);
