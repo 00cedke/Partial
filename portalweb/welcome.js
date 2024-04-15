@@ -1,1 +1,3 @@
-
+function ExitPage() {
+    window.close();
+}
