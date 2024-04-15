@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
+    <label for="language">Choice language :</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="jp">日本語</option>
+    </select>
     <script src="welcome.js"></script>
     <script src="translations/languages.json"></script>
     <div class="bubble"></div>
@@ -20,21 +26,59 @@
   <div class="bubble"></div>
   <div class="bubble"></div>
     <div class="container">
-        <button onclick="changeLanguage('fr')">Français</button>
-    <button onclick="changeLanguage('jp')">Japonais</button>
-        <h1 id="title-text1" class="title">Welcome to PartialVerse</h1>
+        <h1 id="title-text1" data-translate="title-text1" class="title">Welcome to PartialVerse</h1>
         <div class="content">
-            <p>Here are some rules and instructions for using PartialVerse:</p>
+            <p id="rules-text" data-translate="rules-text">Here are some rules and instructions for using PartialVerse:</p>
             <ul>
-                <li>This project was created by cedkeChat01.</li>
-                <li>helped by lucas-wiiu, Ortalex, nt-games and DarkStarWolf.</li>
-                <li>Without them, this project would not exist, thanks to them.</li>
+                <li id="text-1" data-translate="text-1">This project was created by cedkeChat01.</li>
+                <li id="text-2" data-translate="text-2">helped by lucas-wiiu, Ortalex, nt-games and DarkStarWolf.</li>
+                <li id="text-3" data-translate="text-3">Without them, this project would not exist, thanks to them.</li>
             </ul>
         </div>
         <div class="buttons">
-            <a onclick="ExitPage()" data-sound="SE_WAVE_EXIT" class="button blue">Exit</a><br>
-            <a href="index.html" data-sound="SE_WAVE_MENU" class="button blue">Next</a>
+            <a id="button-1" data-translate="button-1" onclick="ExitPage()" data-sound="SE_WAVE_EXIT" class="button blue">Exit</a><br>
+            <a id="button-2" data-translate="button-2" href="index.html" data-sound="SE_WAVE_MENU" class="button blue">Next</a>
         </div>
     </div>
+
+    <script>
+        const translations = {
+            "fr": {
+                "title-text1": "Bienvenue sur PartialVerse.",
+                "rules-text": "Voici quelques règles et instructions pour utiliser PartialVerse :",
+                "text-1": "Ce projet a été créé par cedkeChat01.",
+                "text-2": "aidé par Lucas-Wiiu, Ortalex, nt-games et DarkStarWolf.",
+                "text-3": "Sans eux, ce projet n'existerait pas. Merci à eux.",
+                "button-1": "Quitter",
+                "button-2": "Suivant",
+            },
+            "jp": {
+                "title-text1": "PartialVerse へようこそ。",
+                "rules-text": "PartialVerse を使用するためのルールと手順をいくつか示します。:",
+                "text-1": "このプロジェクトは cedkeChat01 によって作成されました。",
+                "text-2": "Lucas-Wiiu、Ortalex、nt-games、DarkStarWolf の協力を得ています。",
+                "text-3": "彼らがいなければ、このプロジェクトは存在しませんでした。彼らのおかげです。",
+                "button-1": "出口",
+                "button-2": "次",
+            },
+            "en": {
+                "title-text1": "Welcome to PartialVerse.",
+                "rules-text": "Here are some rules and instructions for using PartialVerse :",
+                "text-1": "This project was created by cedkeChat01.",
+                "text-2": "helped by lucas-wiiu, Ortalex, nt-games and DarkStarWolf.",
+                "text-3": "Without them, this project would not exist, thanks to them.",
+                "button-1": "Exit",
+                "button-2": "Next",
+            }
+        };
+
+        function changeLanguage(language) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[language][key];
+            });
+        }
+    </script>
 </body>
 </html>
