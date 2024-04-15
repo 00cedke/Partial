@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartialVerse</title>
+    <meta stylesheet="">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <ul class="tabs">
+        <li class="tab active">Home</li>
+        <li class="tab inactive">Messages</li>
+        <li class="tab inactive">Notifications</li>
+        <li class="tab inactive">Settings</li>
+        <li onclick="ClosePage()" class="tab inactive">Exit</li>
+    </ul>
+
+    <div class="content" id="page1">
+        <h2>Home</h2>
+        <p>You are currently in the beta version of our server.</p>
+    </div>
+
+    <div class="content hidden" id="page2">
+        <div id="chat-box"></div>
+        <input class="inputbox" type="text" id="message-input" placeholder="Entrez votre message...">
+        <button class="button" id="send-button">Envoyer message</button>
+    </div>
+
+    <div class="content hidden" id="page3">
+        <div class="blue-box">
+            <h2>The death of the Nintendo Network</h2>
+            <p>Since April 8 2024, the online mode of Nintendo servers has been stopped.</p>
+            <p>Article published on April 14 at 7:14 p.m.</p>
+        </div><br>
+        <div class="blue-box">
+            <h2>The project Partial beggining !</h2>
+            <p>Made by cedkeChat01.</p>
+            <p>Article published on April 12.</p>
+        </div>
+    </div>
+
+    <div class="content hidden" id="page4">
+        <h2>Contenu de la page 4</h2>
+        <p>Ceci est le contenu de la page 4.</p>
+    </div>
+
+    <script>
+        function ClosePage() {
+            window.close();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(function(tab, index) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) {
+                        t.classList.remove('active');
+                        t.classList.add('inactive');
+                    });
+
+                    tab.classList.remove('inactive');
+                    tab.classList.add('active');
+
+                    contents.forEach(function(content) {
+                        content.classList.add('hidden');
+                    });
+
+                    contents[index].classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
