@@ -1,1 +1,25 @@
+<?php
+
+$user_ip = $_SERVER['REMOTE_ADDR'];
+
+try {
+    $db = new PDO('sqlite:users.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $db->exec("CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY,
+                ip TEXT NOT NULL
+            )");
+
+    $stmt = $db->prepare("INSERT INTO users (ip) VALUES (:ip)");
+    $stmt->bindParam(':ip', $user_ip);
+    $stmt->execute();
+
+} catch(PDOException $e) {
+    echo "Fucking error : " . $e->getMessage();
+}
+
+$db = null;
+?>
+
 <body onLoad=setTimeout("location.href='portalweb/welcome.html'",0030)>
