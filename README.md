@@ -1,9 +1,6 @@
 # Partial
 Wii U website for message conversation
 
-# Description
--
-
 # Execute server
 - Install NodeJS
 - `git clone https://github.com/00cedke/Partial`
