@@ -8,46 +8,105 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <label for="language">Choice language :</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="jp">日本語</option>
+    </select> 
+    
     <ul class="tabs">
-        <li class="tab active">Home</li>
-        <li class="tab inactive">Messages</li>
-        <li class="tab inactive">Notifications</li>
-        <li class="tab inactive">Settings</li>
-        <li onclick="ClosePage()" class="tab inactive">Exit</li>
+        <li id="home" data-translate="home" class="tab active">Home</li>
+        <li id="messages" data-translate="messages" class="tab inactive">Messages</li>
+        <li id="notifications" data-translate="notifications" class="tab inactive">Notifications</li>
+        <li id="settings" data-translate="settings" class="tab inactive">Settings</li>
+        <li id="exit" data-translate="exit" onclick="ClosePage()" class="tab inactive">Exit</li>
     </ul>
 
     <div class="content" id="page1">
-        <h2>Home</h2>
-        <p>You are currently in the beta version of our server.</p>
+        <h2 id="home" data-translate="home">Home</h2>
+        <p id="beta-text" data-translate="beta-text">You are currently in the beta version of our server.</p>
     </div>
 
     <div class="content hidden" id="page2">
         <div id="chat-box"></div>
         <input class="inputbox" type="text" id="message-input" placeholder="Entrez votre message...">
-        <button class="button" id="send-button">Envoyer message</button>
+        <button class="button" id="send-button">Send message</button>
     </div>
 
     <div class="content hidden" id="page3">
         <div class="blue-box">
-            <h2>The death of the Nintendo Network</h2>
-            <p>Since April 8 2024, the online mode of Nintendo servers has been stopped.</p>
-            <p>Article published on April 14 at 7:14 p.m.</p>
+            <h2 id="title-box" data-translate="title-box">The death of the Nintendo Network</h2>
+            <p id="text1-box" data-translate="text1-box">Since April 8 2024, the online mode of Nintendo servers has been stopped.</p>
+            <p id="text2-box" data-translate="text2-box">Article published on April 14 at 7:14 p.m.</p>
         </div><br>
         <div class="blue-box">
-            <h2>The project Partial beggining !</h2>
-            <p>Made by cedkeChat01.</p>
-            <p>Article published on April 12.</p>
+            <h2 id="title-box2" data-translate="title-box2">The project Partial beggining !</h2>
+            <p id="text1-box2" data-translate="text1-box2">Made by cedkeChat01.</p>
+            <p id="text2-box2" data-translate="text2-box2">Article published on April 12.</p>
         </div>
     </div>
 
     <div class="content hidden" id="page4">
-        <h2>Contenu de la page 4</h2>
-        <p>Ceci est le contenu de la page 4.</p>
+        
     </div>
 
     <script>
         function ClosePage() {
             window.close();
+        }
+
+        const translations = {
+            "fr": {
+                "home": "Accueil",
+                "messages": "Messages",
+                "notifications": "Notifications",
+                "settings": "Paramètres",
+                "exit": "Partir",
+                "beta-text": "Vous êtes actuellement dans la version bêta de notre serveur.",
+                "title-box": "La mort du Nintendo Network",
+                "text1-box": "Vers le 8 Avril 2024, le mode en ligne des serveurs de Nintendo a été aretté.",
+                "text2-box": "Article publié le 14 Avril 2024 a 19:14.",
+                "title-box2": "Le projet Partial commence !",
+                "text1-box2": "Créer par cedkeChat01.",
+                "text2-box2": "Article publié le 12 Avril 2024.",
+            },
+            "jp": {
+                "home": "いらっしゃいませ",
+                "messages": "メッセージ",
+                "notifications": "通知",
+                "settings": "設定",
+                "exit": "離れる",
+                "beta-text": "現在、当社のサーバーのベータ版を使用しています。",
+                "title-box": "",
+                "text1-box": "",
+                "text2-box": "",
+                "title-box2": "",
+                "text1-box2": "",
+                "text2-box2": "",
+            },
+            "en": {
+                "home": "Home",
+                "messages": "Messages",
+                "notifications": "Notifications",
+                "settings": "Settings",
+                "exit": "Exit",
+                "beta-text": "You are currently in the beta version of our server.",
+                "title-box": "The death of the Nintendo Network",
+                "text1-box": "Since April 8 2024, the online mode of Nintendo servers has been stopped.",
+                "text2-box": "Article published on April 14 2024 at 7:14 p.m.",
+                "title-box2": "The project Partial beggining !",
+                "text1-box2": "Made by cedkeChat01.",
+                "text2-box2": "Article published on April 12 2024.",
+            }
+        };
+
+        function changeLanguage(language) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[language][key];
+            });
         }
 
         document.addEventListener("DOMContentLoaded", function() {
