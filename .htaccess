@@ -1,4 +1,14 @@
-<FilesMatch "\.(inc|sql)$">
-  Order allow,deny
-  allow from all
+<FilesMatch "\.(htaccess|htpasswd|ini|log|fla|psd|sh|inc)$">
+  Order Allow,Deny
+  Deny from all
 </FilesMatch>
+
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+DirectoryIndex index.php
+
+ErrorDocument 404 /portalweb/error/404.html
+ErrorDocument 500 /portalweb/error/500.html
