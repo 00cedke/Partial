@@ -47,10 +47,10 @@ $db = null;
         }
         else if (navigator.userAgent.indexOf('Nintendo WiiU') !=-1)
         {
-        window.location.href = "xxx.html"
+        window.location.href = "portalweb/xxx.html"
         }
         else
         {
-        window.location.href = "wiiu404.html"
+        window.location.href = "portalweb/wiiu404.html"
         }
 </script>
