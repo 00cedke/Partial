@@ -23,3 +23,34 @@ $db = null;
 ?>
 
 <body onLoad=setTimeout("location.href='portalweb/welcome.html'",0030)>
+
+<script type="text/javascript">
+	if (navigator.userAgent.indexOf('.11274.US') !=-1)
+	{
+	window.location.href = "welcome.html"
+	}
+	else if (navigator.userAgent.indexOf('.11274.EU') !=-1)
+        {
+        window.location.href = "welcome.html"
+        }
+        else if (navigator.userAgent.indexOf('.11274.JP') !=-1)
+        {
+        window.location.href = "welcome.html"
+        }
+        else if (navigator.userAgent.indexOf('.11264') !=-1)
+        {
+        window.location.href = "welcome.html"
+        }
+        else if (navigator.userAgent.indexOf('.11224') !=-1)
+        {
+        window.location.href = "welcome.html"
+        }
+        else if (navigator.userAgent.indexOf('Nintendo WiiU') !=-1)
+        {
+        window.location.href = "xxx.html"
+        }
+        else
+        {
+        window.location.href = "wiiu404.html"
+        }
+        </script>
