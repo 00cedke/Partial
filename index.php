@@ -53,4 +53,4 @@ $db = null;
         {
         window.location.href = "wiiu404.html"
         }
-        </script>
+</script>
