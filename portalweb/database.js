@@ -27,7 +27,6 @@ async function connect() {
 		UNIQUE(guild_id)
 	)`);
 
-	// This adds an ay_lmao_disabled column to the server settings table, if missing.
 	let hasAyLmaoColumn = false;
 	await database.each('SELECT * FROM pragma_table_info(\'server_settings\')', (_err, row) => {
 		if (row.name === 'ay_lmao_disabled') hasAyLmaoColumn = true;
