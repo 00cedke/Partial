@@ -22,6 +22,7 @@ try {
 $db = null;
 ?>
 
+<html>
 <body onLoad=setTimeout("location.href='portalweb/welcome.html'",0030)>
 
 <script type="text/javascript">
@@ -54,3 +55,4 @@ $db = null;
         window.location.href = "portalweb/wiiu404.html"
         }
 </script>
+	</html>
