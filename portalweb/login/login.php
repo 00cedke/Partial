@@ -1,26 +1,59 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "<redacted>";
+$dbname = "spgv";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+function sanitize_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = sanitize_input($_POST["uname"]);
+    $password = password_hash(sanitize_input($_POST["pword"]), PASSWORD_DEFAULT);
+    $email = filter_var(sanitize_input($_POST["mail"]), FILTER_VALIDATE_EMAIL);
+    $nnid = empty($_POST["nnid"]) ? null : sanitize_input($_POST["nnid"]);
+
+    $stmt = $conn->prepare("INSERT INTO user_info (username, password, email, nnid) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $username, $password, $email, $nnid);
+
+    if ($stmt->execute()) {
+        echo "Signup successful!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Log In</title>
 </head>
 <body>
-    <div class="container">
-        <form action="#" class="register-form">
-            <h2>Log In</h2>
-            <div class="form-group">
-                <label for="username">Pseudo:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <a href="forgot-password.html" class="pwdreset">Forgot the password?</a>
-            </div>
-            <button type="submit">LogIn</button>
-        </form>
-    </div>
+
+<h2>Signup Form</h2>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    Username: <input type="text" name="uname" required><br>
+    Password: <input type="password" name="pword" required><br>
+    Email: <input type="email" name="mail" required><br>
+    Nintendo Network ID (optional): <input type="text" name="nnid"><br>
+    <input type="submit" value="Signup">
+</form>
+
 </body>
 </html>
+
