@@ -22,9 +22,20 @@ try {
 $db = null;
 ?>
 
+<!DOCTYPE html>
 <html>
-<body onLoad=setTimeout("location.href='portalweb/welcome.html'",0030)>
-
+<head>
+	<meta charset="utf-8">
+	<meta langue="fr">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PartialVerse - Loading...</title>
+	<meta http-equiv="refresh" content="5; URL=communities.php">
+</head>
+<body>
+<img src="https://files.catbox.moe/af556k.webm" width="100%" height="100%">
+<audio loop autoplay>
+	<source src="portalweb/audio/bootaud.mp3" type="audio/mpeg">
+</audio>
 <script type="text/javascript">
 	if (navigator.userAgent.indexOf('.11274.US') !=-1)
 	{
@@ -55,4 +66,5 @@ $db = null;
         window.location.href = "portalweb/wiiu404.html"
         }
 </script>
-	</html>
+</body>
+</html>
