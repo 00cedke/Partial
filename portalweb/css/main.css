@@ -1,0 +1,167 @@
+h1 {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #888;
+}
+
+p {
+    font-size: 26px;
+    line-height: 30px;
+    margin: 0;
+}
+
+small {
+    font-size: 20px;
+    line-height: 26px;
+    margin: 0;
+    color: #666;
+}
+
+#app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: 600px;
+    background-image: url('../assets/background.png');
+}
+
+.full {
+    height: 720px !important;
+}
+
+#topbar {
+    position: absolute;
+    width: 1280px;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+
+    background-image: url('../assets/gradient.png');
+}
+
+#top_title {
+    position: absolute;
+    left: 194px;
+    top: 18px;
+    fontsize: 28.5px;
+    line-height: 28.5px;
+    color: #FFFFFF;
+    text-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar {
+    position: absolute;
+    width: 160px;
+    height: 600px;
+    left: 0px;
+    top: 0px;
+
+    background-image: url('../assets/sidebar.png');
+    border-radius: 0px 60px 60px 0px;
+
+    box-shadow : 0px 3px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden !important;
+}
+
+.full #sidebar {
+    height: 720px;
+}
+
+.user {
+    display: none;
+}
+
+.full .user {
+    display: block;
+}
+
+.sidebarElement {
+    width: 160px;
+    height: 120px;
+    background-color: transparent;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.sidebarElement img {
+    width: 75px;
+    margin-left: 41px;
+    background-size: contain;
+    background-position: center;
+    margin-top: 7px;
+}
+
+.sidebarElement p {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px;
+    color: #323232;
+}
+
+.close {
+    background-image: url('../assets/closeGrad.png');
+    border-radius: 0px 0px 60px 0px;
+}
+
+.close img {
+    width: 57px;
+    margin-left: 52px;
+}
+
+.imsmall img {
+    width: 62px;
+    margin-left: 52px;
+}
+
+.close p {
+    color: #fff;
+}
+
+.mt img {
+    margin-top: 15px;
+}
+
+.mt2 img {
+    margin-top: 20px;
+}
+
+.sel {
+    background-image: url('../assets/select.png');
+}
+
+.sel p {
+    color: #3CAA00;
+}
+
+#content {
+    position: absolute;
+    width: 963px;
+    padding: 15px;
+    height: 499px;
+    left: 253px;
+    top: 70px;
+    overflow: scroll;
+}
+
+.full #content {
+    height: 620px;
+}
+
+.card {
+    width: 863px;
+    background-image: url('../assets/sidebar.png');
+    background: linear-gradient(177.21deg, #FFFFFF 0%, #E9E9E9 100%), #FFFFFF;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 25px 35px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
