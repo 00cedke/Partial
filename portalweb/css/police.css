@@ -1,1 +1,8 @@
+@font-face {
+    font-family: "wiiu-font";
+    src: url('wiiu-font.ttf') format('truetype');
+}
 
+body {
+    font-family: "wiiu-font", sans-serif;
+}
