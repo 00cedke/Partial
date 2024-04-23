@@ -29,7 +29,7 @@ $db = null;
 	<meta langue="fr">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PartialVerse - Loading...</title>
-	<meta http-equiv="refresh" content="5; URL=communities.php">
+	<meta http-equiv="refresh" content="5; URL=portalweb/index.html">
 </head>
 <body>
 <img src="https://files.catbox.moe/af556k.webm" width="100%" height="100%">
