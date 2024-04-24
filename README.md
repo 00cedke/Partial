@@ -2,11 +2,11 @@
 Wii U website for message conversation
 
 # Execute server
-- Install NodeJS
+- Install NodeJS with `sudo apt install nodejs` then, `sudo apt install npm`
 - `git clone https://github.com/00cedke/Partial`
 - `cd Partial-main`
-- `node server.js` to run the web port.
+- `node server.js` to run the web server.
 
 # Credits
-- cedkeChat01 for create the project and someone code of server.
-- NotAymo for login ID code in php and other stuffs.
+- cedkeChat01 for creating the project and someone's code for the server.
+- NotAymo for the login ID code in php and other stuff.
