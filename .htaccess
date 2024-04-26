@@ -1,7 +1,5 @@
-<FilesMatch "\.(htaccess|htpasswd|ini|log|fla|psd|sh|inc)$">
-  Order Allow,Deny
-  Deny from all
-</FilesMatch>
+Order Allow,Deny
+Allow from all
 
 RewriteEngine On
 
