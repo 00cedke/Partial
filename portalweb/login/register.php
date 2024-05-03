@@ -164,8 +164,8 @@ require_once('inc/header.php');
 ?><div class="post-list-outline no-content center">
     <form method="post">
         <input type="hidden" name="token" value="<?=$_SESSION['token']?>"><br>
-        <img src="/assets/img/menu-logo.png">
-        <p>Sign up for a Miiverse World account to make posts and interact with other users.</p>
+        <img src="../assets/img/menu-logo.png">
+        <p>Sign up for a Partialverse World account to make posts and interact with other users.</p>
         <?php if(!empty($error)) { ?><p class="post-tag post-topic-category symbol"><?=htmlspecialchars($error)?></p><?php } ?><br>
         <input type="text" name="username" placeholder="Username" required maxlength="32"><br>
         <input type="text" name="nickname" placeholder="Nickname" required maxlength="64"><br>
