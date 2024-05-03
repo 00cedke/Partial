@@ -1,10 +1,15 @@
+Options -MultiViews
+Options -Indexes
+Options +FollowSymlinks
+Options +SymLinksIfOwnerMatch
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+
+<Files .htaccess>
 Order Allow,Deny
-Allow from all
-
-RewriteEngine On
-
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+Deny from all
+</Files>
 
 DirectoryIndex index.php
 
