@@ -17,8 +17,8 @@
 <div class="center">
 	<h1>Before starting,</h1>
 	<h2>Are you a new user or an existing user?</h2>
-	<a href="register.php"><img src="assets/newuser_bt.png" class="centernew"></a>
-	<a href="login.php"><img src="assets/exuser_bt.png" class="centerold"></a>
+	<a href="register.php"><img src="../assets/newuser_bt.png" class="centernew"></a>
+	<a href="login.php"><img src="../assets/exuser_bt.png" class="centerold"></a>
 </div>	
 </body>
 </html>
