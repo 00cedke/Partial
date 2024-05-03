@@ -8,5 +8,5 @@ Wii U website for message conversation
 - `node server.js` to run the web server.
 
 # Credits
-- cedkeChat01 for creating the project and someone's code for the server.
-- NotAymo for the login ID code in php and other stuff.
+- cedkeChat01 for create the project.
+- NotAymo for the help to this project and made the login API.
