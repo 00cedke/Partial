@@ -1,5 +1,6 @@
 # Partial
 Wii U website for message conversation
+This project is a reconstruction of Miiverse, only better.
 
 # Execute server
 - Install NodeJS with `sudo apt install nodejs` then, `sudo apt install npm`
