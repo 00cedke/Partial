@@ -18,10 +18,10 @@ body {
     width: 100px;
     height: 100px;
     background-color: #4855FB;
-    border-radius: 50%; /* Pour donner la forme d'une bulle */
-    opacity: 0.5; /* Opacité réduite pour un effet de transparence */
+    border-radius: 50%; 
+    opacity: 0.5; 
   }
-  /* Positionnement des bulles */
+
   .bubble:nth-child(1) {
     top: 10%;
     left: 10%;
@@ -46,7 +46,7 @@ body {
     top: 90%;
     left: 90%;
   }
-  /* Nouvelles bulles */
+
   .bubble:nth-child(7) {
     top: 20%;
     left: 80%;
@@ -81,7 +81,7 @@ body {
     display: inline-block;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
