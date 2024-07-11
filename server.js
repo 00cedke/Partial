@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 const server = http.createServer((req, res) => {
-  const filePath = path.join(__dirname, 'portalweb/home.html');
+  const filePath = path.join(__dirname, 'index.php');
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
@@ -34,7 +34,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Serveur HTTP écoutant sur le port ${port}`);
-  
-  // exec(`start http://localhost:${port}`); // start localhost url + port only
+  console.log(`The server started on port ${port}`);
 });
