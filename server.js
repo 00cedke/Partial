@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const { exec } = require('child_process');
-const port = 4221;
+const port = 80;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       res.writeHead(500);
-      res.end('Erreur interne du serveur');
+      res.end('Error server');
     } else {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data);
